@@ -38,41 +38,43 @@ body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.6 "Heebo",sys
 .hero::after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:var(--yel);right:-62px;bottom:-58px}
 .ring{position:absolute;width:46px;height:46px;border-radius:50%;border:4px solid var(--yel);left:16px;top:14px;opacity:.9}
 .hero>*:not(.ring){position:relative;z-index:1}
-.kicker{display:inline-block;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--yel);margin:0 0 6px}
+.kicker{display:inline-block;font-weight:700;font-size:18px;letter-spacing:.02em;color:var(--yel);margin:0 0 6px}
 .hero h1{margin:0;font-weight:900;font-size:clamp(46px,14vw,72px);line-height:1.02}
-.trio{margin:12px 0 0;font-size:clamp(17px,4.6vw,20px);font-weight:500;opacity:.95}
+.trio{margin:12px 0 0;font-size:clamp(20px,5.6vw,23px);font-weight:500;opacity:.95}
 .trio span{white-space:nowrap}
 .trio i{font-style:normal;color:var(--yel);padding:0 .45em}
 .inv{padding:0 16px 28px;margin-top:-62px;position:relative;z-index:2}
 .facts{background:var(--card);border-radius:22px;box-shadow:0 10px 30px rgba(18,41,73,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));text-align:center;padding:6px 10px}
-.facts div{padding:12px 6px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.facts div{padding:14px 6px;display:flex;flex-direction:column;justify-content:center;gap:2px}
 .facts div:nth-child(2){border-inline-start:2px solid var(--line)}
+.facts .hrs small{white-space:nowrap}
 .facts .hrs{grid-column:1/-1;border-top:2px solid var(--line);flex-direction:row;align-items:baseline;justify-content:center;gap:10px}
-.facts small{color:var(--mute);font-size:14px;font-weight:700;line-height:1.3}
-.facts b{font-size:clamp(20px,6vw,24px);font-weight:900;color:var(--navy);line-height:1.25}
+.facts small{color:var(--mute);font-size:17px;font-weight:700;line-height:1.3}
+.facts b{font-size:clamp(27px,8.2vw,34px);font-weight:900;color:var(--navy);line-height:1.25}
 .greet{text-align:center;margin:28px 8px 24px}
-.greet h2{margin:0 0 4px;font-size:24px;font-weight:800;color:var(--navy)}
-.greet p{margin:0;font-size:19px;text-wrap:balance}
+.greet h2{margin:0 0 6px;font-size:27px;font-weight:800;color:var(--navy)}
+.greet p{margin:0;font-size:21px;line-height:1.5;text-wrap:balance}
 .greet strong{white-space:nowrap}
 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .box{background:var(--card);border-radius:18px;padding:18px 16px 16px;border-top:6px solid var(--yel);box-shadow:0 4px 14px rgba(18,41,73,.06)}
 .box.n{border-top-color:var(--navy)}
-.box h3{margin:0 0 6px;font-size:19px;font-weight:800;color:var(--navy)}
-.box p{margin:0;font-size:16px;line-height:1.55;color:#2c3a52}
+.box h3{margin:0 0 6px;font-size:22px;font-weight:800;color:var(--navy)}
+.box p{margin:0;font-size:19px;line-height:1.5;color:#2c3a52}
 .cta{display:flex;align-items:center;gap:14px;margin:22px 0 0;background:var(--yel);color:var(--navy);text-decoration:none;border-radius:999px;padding:16px 22px 16px 18px;box-shadow:0 10px 24px rgba(255,210,31,.45);transition:transform .15s}
 .cta:active{transform:scale(.98)}
 .cta:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
 .cta svg{flex:none;width:30px;height:30px}
 .cta span{flex:1;display:flex;flex-direction:column;line-height:1.25}
-.cta b{font-size:clamp(18px,5.4vw,22px);font-weight:900;white-space:nowrap}
-.cta small{font-size:15px;font-weight:500;margin-top:3px}
+.cta b{font-size:clamp(19px,6vw,25px);font-weight:900;white-space:nowrap}
+.cta small{font-size:17px;font-weight:500;margin-top:3px}
 .cta .arw{flex:none;width:22px;height:22px}
-.park{display:flex;gap:10px;align-items:flex-start;margin:22px 4px 0;padding:14px 16px;border-radius:14px;background:#ece5d5;font-size:16px;line-height:1.5}
+.park{display:flex;gap:10px;align-items:flex-start;margin:22px 4px 0;padding:14px 16px;border-radius:14px;background:#ece5d5;font-size:18px;line-height:1.5}
 .park b{flex:none;width:28px;height:28px;border-radius:7px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px;margin-top:1px}
 .sign{text-align:center;margin:26px 0 6px;padding-top:20px;border-top:2px solid var(--line)}
-.sign p{margin:0;color:var(--mute)}
-.sign strong{display:block;font-size:20px;font-weight:800;color:var(--navy)}
-@media(max-width:440px){.pair{grid-template-columns:minmax(0,1fr)}}
+.sign p{margin:0;color:var(--mute);font-size:19px}
+.sign strong{display:block;font-size:23px;font-weight:800;color:var(--navy)}
+@media(max-width:600px){.pair{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:360px){.cta .arw{display:none}.cta{padding-inline:16px;gap:10px}.facts b{font-size:25px}}
 
 /* ---------- search ---------- */
 .top{background:var(--navy);color:#fff;padding:14px 16px 66px;position:relative;overflow:hidden}
@@ -211,8 +213,10 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 16px 26px}
 
 <script>
 {
-/* Published Google Sheet (File > Share > Publish to web) */
-const CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vTUV43u-n0gNdaJ7yx8M6YKg3xUvx5Wktj7ls1CZuq3CwXRyM92dzPkxCqEQL2ZsWe-1onCzWea6aQk/pub?gid=1230172655&single=true&output=csv';
+/* 1st: the file she edits ("מפגש תמה א תשפז", shared by link) - changes show immediately.
+   2nd: the published-to-web copy, as a fallback. */
+const CSV_URLS=['https://docs.google.com/spreadsheets/d/1sh8HRv1_YYgEj3lGhf18XfQ2Hr26hjrm/export?format=csv&gid=1230172655',
+ 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTUV43u-n0gNdaJ7yx8M6YKg3xUvx5Wktj7ls1CZuq3CwXRyM92dzPkxCqEQL2ZsWe-1onCzWea6aQk/pub?gid=1230172655&single=true&output=csv'];
 const SNAPSHOT="כיתה,מחנכ/ת,חדר,מבנה,מורה,חדר,מבנה,,,,,,\nז1,רונית ניצן ענבר,704,שדות,נוגרדי מרעית,אופק,גוונים,,,,,,\nז2 מקדמת,ענבל פז,701,שדות,בר חיים הילי,אלמוג,גוונים,,,,,,\nז3 מקדמת,שני טוכמן,705,שדות,,אמנויות,חדר מורים,,,,,,\nז4,שי אילן,703,שדות,בן שפר לי,דמוקריטוס,מבנה ט - מדעים,,,,,,\nז5,מירב כהן (אלוש),707- כיתת שמע,שדות,פלגי אפרת,דמוקריטוס,מבנה ט - מדעים,,,,,,\nז6,נועם רז,שורשים,כישורי חיים,שחאדה ניהאל,דמוקריטוס,מבנה ט - מדעים,,,,,,\nז7,אנסאם מזאריב,זינוק,כישורי חיים,שחר בורשטיין,הרמוניה,אמנויות,,,,,,\nז8 תקשורת,אבנר קובי,מעגלים,כישורי חיים,,הרמוניה,אמנויות,,,,,,\nז9,אורן שבח,706,שדות,אפרתי עידית,הרצל,מבנה יא - ארץ ישראל,,,,,,\nז10,ליאור סעדון,702,שדות,ברקוביץ' אינה,חדר מורים קטן,מבנה ט - מדעים,,,,,,\nרכזת השכבה,שמרית סוסנה,,שדות,,חדר מורים עליון,מבנה ט - מדעים,,,,,,\nיועצת השכבה,מירי שטיין,,ייעוץ,,,,,,,,,\nח1,טל עופר,804,שדות,ברבא ארינה,חדר צוות,מבנה י - מדעי הרוח,,,,,,\nח2 מקדמת,מירי רוזנפלד ,807,שדות,זהבי משה,חדר צוות,מבנה יא - ארץ ישראל,,,,,,\nח3 מקדמת,אסתר חזן,805,שדות,חן רחלה,חדר צוות,מבנה י - מדעי הרוח,,,,,,\nח4,רואן חלבי,806,שדות,שפר דורון,חדר צוות,מבנה י - מדעי הרוח,,,,,,\nח5,ליאור סולמי אדלשטיין,802,שדות,קלדרון קרן,חדר שקוף 1,ביוספרי,,,,,,\nח6,נעמה קרוכמל,803,שדות,גראואר נחשון נדב,חדר שקוף 2,ביוספרי,,,,,,\nח7,יהונתן צדקה,801,שדות,בבאי יובל,כבוד האדם,מבנה י - מדעי הרוח,,,,,,\nיועצת השכבה,גילי גלינדס,,ייעוץ,בוקשאנסקי שרית,כבוד האדם,מבנה י - מדעי הרוח,,,,,,\nט1,יותם בלוך,דלטון,מבנה ט - מדעים,בסון רחל,כבוד האדם,מבנה י - מדעי הרוח,,,,,,\nט2 מקדמת,מיטל מזרחי,מגלן,מבנה ט - מדעים,ברסלר ערן,משרד,\"תבונ\"\"ה\",,,,,,\nט3 מקדמת,נירית זן בר,דה וינצ'י,מבנה ט - מדעים,ורדי סחר אור,משרד,\"תבונ\"\"ה\",,,,,,\nט4,שי מוריס,דרווין,מבנה ט - מדעים,יהושוע חיה,משרד,\"תבונ\"\"ה\",,,,,,\nט5,אפרת שחר דרוק,איינשטיין,מבנה ט - מדעים,סבאג יוסי,משרד,\"תבונ\"\"ה\",,,,,,\nט6,ליאורה משה,ניוטון,מבנה ט - מדעים,,מחשבים,מבנה יב - שפות,,,,,,\nט7,יסמין שגיא,גלילאו,מבנה ט - מדעים,,,,,,,,,\nט8 תקשורת,רעות רץ,מדעים תקשורת,מבנה ט - מדעים,קרל ענת,מחשבים,מבנה יב - שפות,,,,,,\nט9,קורל עמיצור,גאוס,מבנה ט - מדעים,אוחנונה פאפאתנוס שיר,מחשבים,מבנה יב - שפות,,,,,,\nט10 מיקוד,נורית שביט,מרום,גוונים,זרקא יוסי,מליאה,ביוספרי,,,,,,\nיועצת השכבה,עדן בן סימון,,ייעוץ,סטמפו אייל,מליאה,ביוספרי,,,,,,\n\"י1(ל\"\"ב עיוני)\",,קראוון תמר,,בש מיכאל,מליאה,ביוספרי,,,,,,\nי2 (לב טכנולוגי),רותם זר,בגד כפת,מבנה י - מדעי הרוח,צדוק קרנית,מליאה,ביוספרי,,,,,,\nי3 מקדמת,קתרין מילר,מסע אל העבר,מבנה י - מדעי הרוח,מרדכי מיכל,חדר מחשבים,ביוספרי,,,,,,\nי4,אילנה שור מדרוני,הנסיך הקטן,מבנה י - מדעי הרוח,,מליאה,ביוספרי,,,,,,\nי5 תקשורת,מוריה בן צבי,\"אית\"\"ן\",מבנה י - מדעי הרוח,אברבנאל רונן,חיזוק חיובי,מבנה י - מדעי הרוח,,,,,,\nי6,ליאור קציר,מוזה,מבנה י - מדעי הרוח,אדלר דני,חיזוק חיובי,מבנה י - מדעי הרוח,,,,,,\nי7,חגי קשת,רנסנס,מבנה י - מדעי הרוח,גלברד ארי,משרד,ביוספרי,,,,,,\nי8,שולה גיא,כלל אזרחיה,מבנה י - מדעי הרוח,אלוני אלמוג,משרד,שדות,,,,,,\n\"מנהלת חט\"\"ע\",מורן קרני,\"משרד מנהלת חט\"\"ע\",\"בין מבנה יא - א\"\"י למבנה יב - שפות\",ארזי ארנון,משרד מורי אזרחות,מבנה י - מדעי הרוח,,,,,,\nיועצת השכבה,ליטל שוורץ שרעבי,,ייעוץ,בצר נעמי,עדה,מבנה ט - מדעים,,,,,,\n\"יא1 (ל\"\"ב עיוני)\",רוני סימון (גלית אגוזי),ביאליק,מבנה יא - ארץ ישראל,ברכשטיין אירינה,עדה,מבנה ט - מדעים,,,,,,\n\"יא2 (ל\"\"ב טכנולוגי)\",קטי שני,רות,מבנה יא - ארץ ישראל,ניב יהודית,עדה,מבנה ט - מדעים,,,,,,\nיא3 מקדמת,טל פחימה,לאה גולדברג,מבנה יא - ארץ ישראל,,פופ ארט,אמנויות,,,,,,\nיא4,אורי אייל,סנש,מבנה יא - ארץ ישראל,רמון-יונה שירה,\"פל\"\"ג\",גוונים,,,,,,\nיא5,נירית גורן,קולומבוס ,מבנה יא - ארץ ישראל,דניאלי יואב,פליני,אמנויות,,,,,,\nיא6,הגר קליפלד,עגנון,מבנה יא - ארץ ישראל,זובידאת מנאר,פסטר,מבנה ט - מדעים,,,,,,\nיא7,אורית ברקאי,בן גוריון,מבנה יא - ארץ ישראל,זרקא אסף רעות,פסטר,מבנה ט - מדעים,,,,,,\nיא8 ,ענבל רז,רחל,מבנה יא - ארץ ישראל,אלמברג שרף דוד,פסטר,מבנה ט - מדעים,,,,,,\nיועצת השכבה,חן אלאל,,ייעוץ,מור גרשון,פרדיי,מבנה ט - מדעים,,,,,,\n\"יב1 (ל\"\"ב עיוני)\",גלית פינדלאי,חדר רכזות אנגלית,מאחורי הספריה מול שפות,רימסקי עופר,פרדיי,מבנה ט - מדעים,,,,,,\n\"יב2 (ל\"\"ב טכנולוגי)\",רינת אזולאי,סן פרנסיסקו,מבנה יב - שפות,פדידה שטרית שירן,פרדיי,מבנה ט - מדעים,,,,,,\nיב3 מקדמת ,קרן האן,פריז,מבנה יב - שפות,צביק רינת,קומפוזיציה,אמנויות,,,,,,\nיב4,איריס אלברסהיים,ירושלים,מבנה יב - שפות,קוטלר גלה (גלינה),קירי,מבנה ט - מדעים,,,,,,קראוון זית\nיב5,אורטל בן דוד,לונדון,מבנה יב - שפות,ורדי נירית,קירי,מבנה ט - מדעים,,,,,,\nיב6,סילבי קינן,רבת עמון,מבנה יב - שפות,אור כרמית,קירי,מבנה ט - מדעים,,,,,,\nיב7,עמיחי כלב,יוהנסבורג ,מבנה יב - שפות,,,,,,,,,\nיב8 מקדמת,עינב יזרעאלי,קהיר,מבנה יב - שפות,שחר לירז,ברק,גוונים,,,,,,\nרכזת השכבה,מיכל שוורץ,חדר רכזת שכבה,מבנה יב - שפות,אלמאז סונדוס,חדר מורים עליון,שדות,,,,,,\nיועצת השכבה,זיוה אוחיון,,ייעוץ,רוזנבלום עידית,קראוון זית,,,,,,,\n,שחר לוי,מעגלים,כישורי חיים,יומנא זיאדאת,קירי,מבנה ט - מדעים,,,,,,\n,נוי מוסיוב,מדעים תקשורת,מבנה ט - מדעים,,,,,,,,,\n,גיא קליפר,\"אית\"\"ן\",מבנה י - מדעי הרוח,,,,,,,,,\n,,,,תורן אילן,כבוד האדם,מבנה י - מדעי הרוח,,,,,,\n,,,,דולב נטע,שייקספיר,אמנויות,,,,,,\n,,,,רז תמר,שייקספיר,אמנויות,,,,,,\n,,,,לין עפרי,תאלס,מבנה ט - מדעים,,,,,,\n,,,,סט שי,תאלס,מבנה ט - מדעים,,,,,,\n,,,,פלטי עמית,תאלס,מבנה ט - מדעים,,,,,,\n,,,,,פופ ארט,אמנויות,,,,,,\n,,,,דיאן שיבולי,ניו יורק,מבנה יב - שפות,,,,,,\n,,,,מחאגנה מראם,ניו יורק,מבנה יב - שפות,,,,,,\n,,,,בנקוב צור מאיה,\"כיתת ל\"\"ב חדר מורים\",מבנה יב - שפות,,,,,,\n,,,,סיגל דיויד,חדר מורים,מבנה יב - שפות,,,,,,\n,,,,ברמן זיוית,חדר מורים,מבנה יב - שפות,,,,,,\n,,,,עואד תאמר,אבו דאבי,מבנה יב - שפות,,,,,,\n,,,,קורן סיון,אבו דאבי,מבנה יב - שפות,,,,,,\n,,,,מייזלס שובל דניאל,ניו יורק,מבנה יב - שפות,,,,,,\n";
 const SNAP_DATE='26.11.2026';
 
@@ -340,12 +344,15 @@ function use(text,live){
 async function load(){
   use(SNAPSHOT,false);
   try{const c=localStorage.getItem('megiddo-csv'); if(c) use(c,false)}catch(e){}
-  try{
-    const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),8000);
-    const r=await fetch(CSV_URL,{signal:ctl.signal,cache:'no-store'}); clearTimeout(t);
-    if(!r.ok) throw 0; const txt=await r.text(); if(!/מורה/.test(txt.slice(0,300))) throw 0;
-    use(txt,true); try{localStorage.setItem('megiddo-csv',txt)}catch(e){}
-  }catch(e){}
+  for(const u of CSV_URLS){
+    try{
+      const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),8000);
+      const r=await fetch(u+'&t='+Date.now(),{signal:ctl.signal,cache:'no-store'}); clearTimeout(t);
+      if(!r.ok) throw 0; const txt=await r.text(); if(!/מורה/.test(txt.slice(0,300))) throw 0;
+      use(txt,true); try{localStorage.setItem('megiddo-csv',txt)}catch(e){}
+      return;
+    }catch(e){}
+  }
 }
 load();
 }
