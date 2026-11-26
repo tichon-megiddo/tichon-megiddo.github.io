@@ -98,6 +98,7 @@ body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.6 "Heebo",sys
 .res.act{border-color:var(--yel);box-shadow:0 0 0 3px rgba(255,210,31,.35)}
 .nm{font-weight:800;font-size:19px;line-height:1.3}
 .rl{color:var(--mute);font-size:15px;line-height:1.35}
+.tag{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-inline-end:4px;vertical-align:1px}
 .loc{font-size:16px;line-height:1.4;margin-top:3px}
 .loc b{font-weight:700;color:var(--navy)}
 .badges{grid-row:1/4;grid-column:2;display:flex;gap:6px}
@@ -188,7 +189,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 16px 26px}
           placeholder="שם המורה או כיתה, למשל ז3" aria-label="חיפוש לפי שם מורה או כיתה">
         <button id="clr" type="button" aria-label="ניקוי החיפוש">✕</button>
       </div>
-      <p class="hint">אפשר להקליד שם פרטי, שם משפחה או חלק מהשם. לאיתור היועצת – הקלידו "יועצת".</p>
+      <p class="hint">אפשר להקליד שם פרטי, שם משפחה או חלק מהשם. אפשר גם לחפש "יועצת" או "מנהל".</p>
       <p id="status" aria-live="polite">טוען נתונים…</p>
     </section>
 
@@ -248,21 +249,39 @@ function parseCSV(text){
   return rows;
 }
 const GRADE=/^(יב|יא|ז|ח|ט|י)\s*\d/;
+/* Columns are read by their headers: every person column (מחנכ/ת, מורה, מנהל/ת…) owns the
+   "חדר", "מבנה" and "תפקיד" columns that follow it, until the next person column. */
+const PERSON=/^(מחנכ|מורה|מנהל|יועצ|רכז|צוות|איש)/;
+function groupsOf(head){
+  const h=head.map(x=>(x||'').trim()), gs=[]; let g=null;
+  h.forEach((v,i)=>{
+    if(PERSON.test(v)){g={col:i,kind:v,room:-1,bld:-1,role:-1};gs.push(g)}
+    else if(g){ if(/^חדר/.test(v)&&g.room<0)g.room=i; else if(/^מבנה/.test(v)&&g.bld<0)g.bld=i; else if(/^(תפקיד|תיאור)/.test(v)&&g.role<0)g.role=i; }
+  });
+  return {cls:h.findIndex(v=>/^כיתה/.test(v)),gs};
+}
 function toEntries(text){
-  const rows=parseCSV(text).slice(1), out=[];let grade='';
-  for(const r of rows){
-    const [a,b,c,d,e,f,g]=r.map(x=>(x||'').trim());
-    const m=a.match(GRADE); if(m) grade=m[1];
-    if(b){
-      let role;
-      if(m) role='מחנך/ת כיתה '+a;
-      else if(/השכבה/.test(a)) role=a.replace('השכבה','שכבה '+grade+"'");
-      else role=a||'צוות חינוכי';
-      out.push({name:b,role,room:c||(/יועצ/.test(a)?'חדר ייעוץ':''),bld:d,nums:buildings(d||c)});
+  const all=parseCSV(text), {cls,gs}=groupsOf(all[0]||[]), out=[]; let grade='';
+  for(const r of all.slice(1)){
+    const c=i=>i<0?'':(r[i]||'').trim();
+    const a=c(cls), m=a.match(GRADE); if(m) grade=m[1];
+    for(const g of gs){
+      const name=c(g.col); if(!name) continue;
+      const room=c(g.room), bld=c(g.bld), own=c(g.role); let role;
+      if(own) role=own;
+      else if(/^מחנכ/.test(g.kind)){
+        if(m) role='מחנך/ת כיתה '+a;
+        else if(/השכבה/.test(a)) role=a.replace('השכבה','שכבה '+grade+"'");
+        else role=a||'צוות חינוכי';
+      }
+      else if(/^מורה/.test(g.kind)) role='מורה מקצועי/ת';
+      else if(/^מנהל/.test(g.kind)) role='הנהלה';
+      else role=g.kind;
+      const isHead=/^מנהל/.test(g.kind);
+      out.push({name,role,isHead,room:room||(/יועצ/.test(role)?'חדר ייעוץ':''),bld,nums:buildings(bld||room)});
     }
-    if(e) out.push({name:e,role:'מורה מקצועי/ת',room:f,bld:g,nums:buildings(g||f)});
   }
-  for(const x of out){x.hayN=norm(x.name);x.hay=norm(x.name+' '+x.role);x.words=x.hay.split(' ')}
+  for(const x of out){x.hayN=norm(x.name);x.hay=norm(x.name+' '+x.role+(x.isHead?' הנהלה מנהל':''));x.words=x.hay.split(' ')}
   return out;
 }
 function lev(a,b){if(Math.abs(a.length-b.length)>2)return 9;const d=[...Array(b.length+1).keys()];
@@ -298,7 +317,7 @@ function render(){
   list.innerHTML=results.map((x,i)=>{
     const where=[x.room&&((/^(חדר|כיתת|משרד)/.test(x.room)?'':'חדר ')+'<b>'+esc(x.room)+'</b>'),x.bld&&esc(x.bld)].filter(Boolean).join(' · ')||'המיקום לא צוין';
     const dots=x.nums.length?x.nums.map(n=>`<span class="dot" title="${esc(B[n][0])}">${n}</span>`).join(''):'<span class="dot none">?</span>';
-    return `<li class="res${i?'':' act'}" tabindex="0" data-i="${i}"><span class="nm">${esc(x.name)}</span><span class="rl">${esc(x.role)}</span><span class="loc">${where}</span><span class="badges">${dots}</span></li>`;
+    return `<li class="res${i?'':' act'}" tabindex="0" data-i="${i}"><span class="nm">${esc(x.name)}</span><span class="rl">${x.isHead?'<span class="tag">הנהלה</span> ':''}${esc(x.role)}</span><span class="loc">${where}</span><span class="badges">${dots}</span></li>`;
   }).join('');
   drawMarks();
 }
